@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/hp2393/Friend-Finder#readme",
   "dependencies": {
+    "express": "^4.16.4",
     "packages": "0.0.8"
   }
 }
