@@ -26,7 +26,8 @@ app.use(express.json());
 // These routes give our server a "map" of how to respond when users visit or request data from various URLs.
 // ================================================================================
 
-require("./app/routing/htmlRoutes")(app);
+require("./app/routing/htmlRoutes.js")(app);
+require("./app/routing/apiRoutes.js")(app);
 
 // =============================================================================
 // LISTENER
@@ -34,5 +35,5 @@ require("./app/routing/htmlRoutes")(app);
 // =============================================================================
 
 app.listen(PORT, function() {
-    console.log("App listening on PORT: " + PORT);
+    console.log("Server listening on http://localhost:" + PORT);
   });
