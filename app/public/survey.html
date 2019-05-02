@@ -4,9 +4,10 @@
         <meta charset="UTF-8">
         <title>FriendFinder</title>
         
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-        <!-- Font Awesome Glyphicons -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://code.jquery.com/jquery.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     </head>
     <body>
         <div class="container">
@@ -15,6 +16,7 @@
             <h3>
                 <strong>About You</strong>
             </h3>
+            
             <h4>Name (Required)</h4>
             <input type="text" id="name" class="form-control" required>
             <hr>
@@ -173,6 +175,49 @@
                     </p>
                 </div>
             </footer>
+            
+            <div id="results" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h2 class="modal-title">
+                                <strong>Best Match</strong>
+                            </h2>
+                        </div>
+                        <div class="modal-body">
+                            <h2 id="match-name"></h2>
+                            <img id="match-img" src="" alt="">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>
+
+<script type="text/javascript">
+
+$("#submit").on("click", function(){
+    let values = [];
+    var name = $("#name").val();
+
+    for (let i = 1; i <= 10; i++) {
+        if (!isNaN(parseInt($("#q" + i + " option:selected").attr("value"))))
+        values.push(parseInt($("#q" + i + " option:selected").attr("value")));
+    };
+
+    if (values.length == 10 && name != ""){
+        console.log(values, name);
+        $("#result").modal("show");
+    } 
+    
+    else {
+        console.log("There ae few missing values");
+    };
+});
+</script>
