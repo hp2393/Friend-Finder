@@ -27,7 +27,10 @@
 
 Friend Finder is deployed to Heroku. Check it out by clicking here. (Insert the link once website is done)
 
+## Problems faced
 
+1. Used HotResturant to help with this homework.
+2. I am unable to submit the survey and display the info on API Friends List. 
 
 ## Author
 **Harsh Patel** 
