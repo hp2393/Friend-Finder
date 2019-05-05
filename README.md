@@ -25,7 +25,7 @@
 
 ## Website
 
-Friend Finder is deployed to Heroku. Vist the link to view the project. (https://infinite-atoll-33129.herokuapp.com/)
+Friend Finder is deployed to Heroku. Vist the link to view the project. (https://polar-stream-66088.herokuapp.com/)
 
 ## Problems faced
 
