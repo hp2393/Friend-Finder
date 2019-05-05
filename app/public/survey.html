@@ -163,7 +163,7 @@
             <br>
             <br>
             <!-- Submit button -->
-            <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit">
+            <button type="submit" class="btn btn-primary btn-lg btn-block" id="submitbtn">
                 <i class="fa fa-check-circle" aria-hidden="true"></i>Submit
             </button>
             <hr>
@@ -201,42 +201,47 @@
         </div>
     </body>
     <script type="text/javascript">
-    $("#submit").on("click", function (event){
-        event.preventDefault();
-        
-        var newfriend = {
-          friendName: $("#name").val().trim(),
-          scores: [
-              $("#quest1").parseInt(),
-              $("#quest2").parseInt(),
-              $("#quest3").parseInt(),
-              $("#quest4").parseInt(),
-              $("#quest5").parseInt(),
-              $("#quest6").parseInt(),
-              $("#quest7").parseInt(),
-              $("#quest8").parseInt(),
-              $("#quest9").parseInt(),
-              $("#quest10").parseInt()
-          ]
-      };
-      console.log(newfriend);
-      $.post("/api/friends", newfriend,
-          function(data){
-              if (data) {
-                  alert("We found a matching friend for you .");
-              }
-              $("#name").val("");
-              $("#quest1").val("--");
-              $("#quest2").val("--");
-              $("#quest3").val("--");
-              $("#quest4").val("--");
-              $("#quest5").val("--");
-              $("#quest6").val("--");
-              $("#quest7").val("--");
-              $("#quest8").val("--");
-              $("#quest9").val("--");
-              $("#quest10").val("--");
-          });
-        </script>
-</html>
+        $("#submitbtn").on("click", function (event){
+            event.preventDefault();
+            function validate() {
+                var isValid = true;
+                $("#name").removeClass("is-invalid");
+                $("#name").removeClass("is-valid");
+                if ($("#name").val() === "") {
+                    isValid = false;
+                    $("#name").addClass("is-invalid");
+                }
+                else { $("#name").addClass("is-valid");}
+                return(isValid);
+            }
+            console.log(validate());
+            console.log($("#quest1").val())
+            
+            if (validate()) {
+                var newfriend = {
+                    friendName: $("#name").val().trim(),
+                    scores: [
+                        $("#quest1").val(),
+                        $("#quest2").val(),
+                        $("#quest3").val(),
+                        $("#quest4").val(),
+                        $("#quest5").val(),
+                        $("#quest6").val(),
+                        $("#quest7").val(),
+                        $("#quest8").val(),
+                        $("#quest9").val(),
+                        $("#quest10").val()
+                    ]
+                };
+            };
+            console.log(newfriend);
+            
+            $.post("/api/friends", newfriend, function(data){
+                console.log("Best match : " + data.name);
+                $("#match-name").text(data.name);
 
+                $("#results").modal("show");
+            });
+        });
+    </script>
+</html>

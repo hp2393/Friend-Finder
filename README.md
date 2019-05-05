@@ -30,7 +30,7 @@ Friend Finder is deployed to Heroku. Vist the link to view the project. (https:/
 ## Problems faced
 
 1. Used HotResturant to help with this homework.
-2. I am unable to submit the survey and display the info on API Friends List. 
+2. I had hard time displaying API friends list on my page. I realized that in my server.js file I had require apiRoutes before htmlRoutes.
 
 ## Author
 **Harsh Patel** 
